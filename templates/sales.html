@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message  in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="card-body p-4">
+    <form action="/sales/create" method="POST" class="card bg-dark text-light">
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <label for="unitMesuareid"> Write the mesuare ID</label>
+                <input type="date" placeholder="Date" name="date" 
+                class="form-control rounded-0 bg-dark border-30 text-light">
+            </div>
+            <div class="mb-3">
+                <label for="unitMesuareid"> Write the mesuare ID</label>
+                <input type="number" placeholder="Put the quantity" name="quantity" 
+                class="form-control rounded-0 bg-dark border-30 text-light">
+            </div>
+
+            <div class="mb-3">
+                <label for="unitMesuareid"> Write the mesuare ID</label>
+                <input type="text" placeholder="Write the product" name="product" 
+                class="form-control rounded-0 bg-dark border-30 text-light">
+            </div>
+            <br><br>
+            <button class="form-control rounded-0 border-30 text-black btn btn-primary"> Send </button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message  in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="card-body p-4">
+    {% for product in productread %}
+    <div class="card mb-1 text-white bg-dark">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h5>
+                    Name: {{product.nameProduct}} - Price: {{product.priceProduct}} - ID's Mesuare: {{product.unitmeidProduct}}    
+                </h5>
+                <div>
+                    <a href="{{ url_for('unitModel.productUpdate', nameProduct=product.nameProduct) }}"
+                    class="btn bg-black text-white btn-sm rounded-1"> Update </a>
+                    <a href="{{ url_for('unitModel.productDelete', nameProduct=product.nameProduct) }}"
+                    class="btn btn-danger btn-sm rounded-1"> Delete </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <a href="{{ url_for('unitModel.productPost')}}" class="form-control rounded-0 border-30 text-black btn btn-primary"> Create </a>
+</div>
+
+{% endblock %}
+

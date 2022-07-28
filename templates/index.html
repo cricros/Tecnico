@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 offset-md-4 bg-dark text-light rounded-5 border-5">
+        <div class="card-body p-4">
+            <div class="mb-3" >
+                <h1>Hola, bienvenido</h1>
+            </div>
+            <div class="mb-3">
+                <div>
+                    <p>Este es el inicio de la api. A continuación te comento como se encuentra divida: 
+                        en la parte superior nos encontramos con el menú de navegación, en el cual contamos con 5 casos. <br>
+                        
+                        Cada caso te lleva a un endpoint diferente, pero, el caso 1 y 2 son tienen por defecto apuntar hacia su endpoint que se encarga de realizar transacciones nuevas hacia la BD; 
+                        el primero te lleva a un formulario para crear un nuevo Mesuare ID, mientras que, el segundo te lleva hacia un
+                        registro en el que podrás dar de alta un nuevo producto. El apartado 3 es similar a los dos anteriores, solo que, este unicamente permite realizar el registro de una venta.
+                        <br>El caso 4 y 5, son REST API, las cuales regresan una respuesta JSON de una respectiva consulta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

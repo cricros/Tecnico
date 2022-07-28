@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message  in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="card-body p-4">
+    <form action="/unitModel/create" method="POST" class="card bg-dark text-light">
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <label for="unitMesuareid"> Write the mesuare ID</label>
+                <input type="text" placeholder="Write the unitMesuareid" name="unitMesuareid" 
+                class="form-control rounded-0 bg-black border-30 text-light">
+            </div>
+            <div class="mb-3">
+                <label for="name"> Write the name </label>
+                <input type="text" placeholder="Name" name="name" 
+                class="form-control rounded-1 bg-dark border-30 text-light">
+            </div>
+            <div>
+                <button class="form-control rounded-0 border-30 text-black btn btn-primary"> Send </button>
+                <br><br>
+            </div>
+            <div>
+                <a href="{{ url_for('unitModel.getUnit')}}" class="form-control rounded-0 border-30 text-black btn btn-light"> Read </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+

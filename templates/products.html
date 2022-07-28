@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message  in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="card-body p-4">
+    <form action="/product/create" method="POST" class="card bg-dark text-light">
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <label for="nameProduct"> Write the product </label>
+                <input type="text" placeholder="Write the product" name="nameProduct" 
+                class="form-control rounded-0 bg-dark border-30 text-light">
+            </div>
+            <div class="mb-3">
+                <label for="unitMesuareid"> Write the price </label>
+                <input type="priceProduct" placeholder="Write the price" name="priceProduct" 
+                class="form-control rounded-0 bg-dark border-30 text-light">
+            </div>
+            <div class="mb-3">
+                <label for="unitmeidProduct"> Write the unit ID mesuare </label>
+                <input type="text" placeholder="Write the idMesuare" name="unitmeidProduct" 
+                class="form-control rounded-0 bg-dark border-30 text-light">
+            </div>
+            <button class="form-control rounded-0 border-30 text-black btn btn-primary"> Send </button>
+            <br><br>
+            <div>
+                <a href="{{ url_for('unitModel.productGet')}}" class="form-control rounded-0 border-30 text-black btn btn-light"> Read </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+
