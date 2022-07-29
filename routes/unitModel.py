@@ -23,6 +23,7 @@ With fields: unit measure id and name."""
 # create
 @uModel.route("/unitModel/create", methods=['GET', 'POST'])
 def postUnit():
+    """Endpoint generado para procesar solicitudes POST"""
     if request.method == 'POST':
         unitMesuareid = request.form['unitMesuareid']
         name = request.form['name']
@@ -38,6 +39,7 @@ def postUnit():
 # read
 @uModel.route("/unitModel/read", methods=['GET'])
 def getUnit():
+    """Endpoint generado para procesar solicitudes GET"""
     modelRead = unitModel.query.all()
     return render_template("unitMesuareget.html", modelRead=modelRead)
 
@@ -45,6 +47,7 @@ def getUnit():
 # update
 @uModel.route("/unitModel/actualizar/<unitMesuareid>", methods=['POST', 'GET'])
 def putUnit(unitMesuareid):
+    """Endpoint generado para procesar solicitudes de actualización de datos mediante GET y POST"""
     model = unitModel.query.get(unitMesuareid)
     if request.method == "POST":
         model.unitMesuareid = request.form['unitMesuareid']
@@ -59,6 +62,7 @@ def putUnit(unitMesuareid):
 # delete
 @uModel.route("/unitModel/delete/<unitMesuareid>")
 def delUnit(unitMesuareid):
+    """Endpoint generado para procesar solicitudes de eliminado"""
     model = unitModel.query.get(unitMesuareid)
     db.session.delete(model)
     db.session.commit()
@@ -74,6 +78,7 @@ Only can receive unit measure id’s created."""
 
 @uModel.route('/product/create', methods=['GET','POST'])
 def productPost():
+    """Endpoint generado para procesar solicitudes POST"""
     if request.method == 'POST':
         nameProduct = request.form['nameProduct']
         priceProduct = request.form['priceProduct']
@@ -86,18 +91,20 @@ def productPost():
             #mensajes flash
             flash("Se agrego correctamente")
             return redirect(url_for('unitModel.productPost'))
-
+        
     return render_template("products.html")
 
 #read
 @uModel.route('/product/read', methods=['GET'])
 def productGet():
+    """Endpoint generado para procesar solicitudes GET"""
     productread = Products.query.all()
     return render_template("productsget.html", productread=productread)
 
 #update
 @uModel.route('/product/update/<nameProduct>', methods=['POST','GET'])
 def productUpdate(nameProduct):
+    """Endpoint generado para procesar solicitudes de actualización de datos mediante GET y POST"""
     prod =  Products.query.get(nameProduct)
     if request.method == 'POST':
         prod.nameProduct = request.form['nameProduct']
@@ -116,6 +123,7 @@ def productUpdate(nameProduct):
 #delete
 @uModel.route('/product/delete/<nameProduct>')
 def productDelete(nameProduct):
+    """Endpoint generado para procesar solicitudes de eliminado"""
     prod = Products.query.get(nameProduct)
     db.session.delete(prod)
     db.session.commit()
@@ -127,6 +135,7 @@ With fields: date, quantity, and product."""
 #post
 @uModel.route('/sales/create', methods=['GET', 'POST'])
 def salesPost():
+    """Endpoint generado para procesar solicitudes POST"""
     if request.method == 'POST':
         date = request.form['date']
         quantity = request.form['quantity']
@@ -166,6 +175,7 @@ amount) get
 
 @uModel.route('/allProducts', methods=['GET'])
 def allProductsGet():
+    """Endpoint generado para procesar solicitudes GET"""
     #iniciando el schema
     productSchema= allProductsSchema(many=True)
     #se hace la consulta
