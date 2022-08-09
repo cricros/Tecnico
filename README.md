@@ -1,3 +1,2 @@
 # Tecnico
-
-Examen ténico para desarrollador backend
+Creación de CRUD API y REST API con flask y python
